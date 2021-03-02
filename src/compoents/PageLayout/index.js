@@ -20,10 +20,7 @@ const Container = styled.div`
   };
   margin-left: auto;
   margin-right: auto;
-  ${({bg}) => bg !== "#ffffff" ?
-    css`background-color: rgba(105, 229, 169, 0.5);`
-    :
-    css`background: #ffffff;`
+  ${({bg}) => bg !=="#ffffff" && css`background-color: rgba(105, 229, 169, 0.5);`
   }
   min-height: 100vh;
 `;

@@ -5,11 +5,9 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 
 
 export default () => {
-  return (
-    <Container>
-      <CircularProgress color="secondary" />
-    </Container>
-  )
+  return <Container>
+    <CircularProgress color="secondary" />
+  </Container>
 };
 
 const Container = styled.div`

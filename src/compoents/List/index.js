@@ -4,7 +4,8 @@ import {
   Paper,
   Container,
   Divider,
-  Button
+  Button,
+  lighten
 } from '@material-ui/core';
 
 import Comments from '../Comments';
@@ -18,29 +19,27 @@ export default ({characters}) => {
       elevation={5}
       component={Paper}
     >
-      {characters && characters.map( (character, index) => {
-        const [commentsMode, setCommentsMode] = useState(false);
-        return (
-          <>
-            <UserSection key={index}>
+      {characters.map( (character, index) => {
+        let [commentsMode, setCommentsMode] = useState(false);
+        return <>
+        
+          <UserSection key={index}>
+            <b>Name:</b>&nbsp;{character.name}
+            &nbsp;<b>Birth year:</b>&nbsp;{character.birth_year}
 
-              <b>Name:</b>&nbsp;{character.name}
-              &nbsp;<b>Birth year:</b>&nbsp;{character.birth_year}
+            <Button
+            style={{position: "absolute", right: 0, top: 0}}
+            variant="outlined"
+            onClick={ () => setCommentsMode(!commentsMode)}
+            >
+              Show / Hide Comments
+            </Button>
+          </UserSection>
 
-              <Button
-              style={{position: "absolute", right: 0, top: 0}}
-              variant="outlined"
-              onClick={ () => {setCommentsMode(!commentsMode)}}
-              >
-                Show / Hide Comments
-              </Button>
-            </UserSection>
+          <Comments commentsMode={commentsMode} setCommentsMode={setCommentsMode} />
 
-            <Comments commentsMode={commentsMode} setCommentsMode={setCommentsMode} />
-
-            <Divider style={{marginTop: "20px"}}/>
-          </>
-        )
+          <Divider style={{marginTop: "20px"}}/>
+        </>
       })}
     </Container>
   );

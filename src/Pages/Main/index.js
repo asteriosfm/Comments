@@ -18,18 +18,19 @@ const getData = async () => {
 
 
 export default () => {
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState(null);
 
   useEffect(
     async () => {
-    setCharacters(await getData())
-  }, [])
+      setCharacters(await getData())
+    }, []
+  )
 
   return <Container>
-    {!characters ?
-      <Loading/>
-    :
+    {characters ?
       <List characters={characters}/>
+    :
+      <Loading/>
     }
   </Container>
 };
